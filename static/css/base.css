@@ -1,0 +1,59 @@
+@import "variables.css";
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+* {
+	box-sizing: border-box;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 2vw;
+    box-sizing: border-box;
+}
+
+#headline {
+	text-align: center;
+	padding-left: 4vw;
+	padding-top: 4vw;
+	font-size: 2vw;
+}
+
+body {
+    margin: 0;
+    font-family: var(--xsite-font-family);
+    text-align: center;
+}
+
+
+h1 {
+	font-size: 5vw;
+	margin: 0px;
+	padding-right: 5%;
+}
+h2 {
+	font-size: 4vw;
+	direction: rtl; /* Right to Left */
+	padding-top: 50px;
+	margin: 0;
+}
+
+main {
+	background: gray;
+	width: 100%;
+	margin-top: 10%;
+}
+
+@media only screen and (max-width: 758px) {
+	.h1 {
+		font-size: 7vw;
+	}
+
+    .navlink {
+        font-size: 4vw;
+    }
+
+
+    .modalbutton {
+        font-size: 4vw;
+    }
+
+    button {
+        font-size: 4vw;
+    }
+}

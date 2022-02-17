@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'דגי גבעתיים-סדנאות' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('workshops.static', filename='css/workshops.css') }}">
+
+{% endblock %}
+
+{% block page_body_js %}{% endblock %}
+
+
+{% block page_body_main_content %}
+
+    {% for workshop in workshops_t %}
+		<section id="sizes">
+				<h1 class="choice">{{ workshop.name}}</h1>
+        </section>
+
+		<section id="photos" class="choices">
+			<h3 class="choice">
+				<p>{{workshop.descer}}
+				<p></p>
+				<p>כמות נרשמים מקסימלית: {{ workshop.Participants }}
+				<p></p>
+				<p>מחיר: {{ workshop.price }} ש"ח
+                <p></p>
+                <p>מספר מקומות שנותרו: {{ workshop.stayed }}
+                <p></p>
+			</h3>
+            {% if session.username %}
+                <h1 class="choice">כמות אנשים</h1>
+                        <form  method="post" action="/workshops/add_to_cart">
+                            <input type="text" id="name" name="name" hidden value="{{ workshop.name}}"></input>
+                            <input type="text" id="desc" name="desc" hidden value="{{workshop.descer}}"></input>
+                            <input type="price" id="price" name="price" hidden value="{{ workshop.price }}"></input>
+                            <b> <input type="number" class="sizeB"  id="number" name="number" min="1" value="1" max="{{ workshop.stayed }}"> </input> </b>
+                            <b> <button class="sizeB"> הוסף לסל </button> </b>
+                        </form >
+            {% else %}
+                <a  >יש להתחבר על מנת להוסיף פריט זה לסל</a>
+            {% endif %}
+        <hr id="line">
+		</section>
+
+    {% endfor %}
+                <p>ניתן להזמין מקמות רק לשבוע העוקב על מנת לשריין מקומות לתאריך אחר, נא ליצור קשר
+                <p></p>
+{% endblock %}
+
+

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'הרכבה עצמית' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('selfAssembly.static', filename='css/selfAssemblyStyle.css') }}">
+
+{% endblock %}
+
+
+{% block page_body_main_content %}
+		<section id="photos" class="choices">
+			<h1 class="choice">בחירת סוגי בשר</h1>
+			<h2> בשר פרמיום</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if (Product.Department== 'פרימיום') and ( Product.dicount_ratio==100) %}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+
+			<h2> בשרים</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if (Product.Department== 'בשרים') and ( Product.dicount_ratio==100) %}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+
+			<h2>עופות</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if (Product.Department== 'עופות') and ( Product.dicount_ratio==100) %}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+
+			<h2> דגים</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if (Product.Department== 'דגים') and ( Product.dicount_ratio==100) %}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+
+			<h2> מוצרים נלווים</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if (Product.Department== 'מוצרים נלווים') and ( Product.dicount_ratio==100) %}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+
+			<h2>תוספות</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if (Product.Department== 'תוספות') and ( Product.dicount_ratio==100) %}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+
+			<h2>מבצעים</h2>
+			<div class="images_buttons">
+                {% for Product in Products_t %}
+                    {%if  Product.dicount_ratio!=100%}
+				        <a onclick=dis("{{Product.en_name}}") style="background-image:url({{Product.img}})">
+					        <span>{{ Product.name }}</span>
+                            <output type="text" id="{{Product.en_name}}_name" hidden>{{ Product.name }}</output>
+                            <output type="text" id="{{Product.en_name}}_img" hidden>{{Product.img}}</output>
+                            <output type="number" id="{{Product.en_name}}_price" hidden>{{ Product.price }}</output>
+                            <output type="text" id="{{Product.en_name}}_desc" hidden>{{ Product.desc }}</output>
+				        </a>
+                     {% endif %}
+                {% endfor %}
+			</div>
+            <form action="/selfAssembly/add_to_cart" method="post">
+			    <output type="text" id=packageInclu name="packageInclu"  ></output>
+                <input type="text" id="desc" name="desc" hidden></input>
+                <p>סה"כ לתשלום:</p>
+				<output type="number" id="number" name="number"  value="0"></output>
+                <input type="number" id="price" name="price" hidden></input>
+
+                {% if session.username %}
+                    <button  type="submit" class="modalbutton">הוסף לסל</button>
+                {% else %}
+                    <a  >יש להתחבר על מנת להוסיף פריט זה לסל</a>
+                {% endif %}
+			</form>
+
+		</section>
+		<div id="id02" class="modal">
+			<form class="modal-content animate">
+				<div class="imgcontainer">
+					<span onclick="document.getElementById('id02').style.display='none'" class="close"
+						title="Close Modal">&times;</span>
+					<img id="modal_img" src="" alt="Avatar" class="avatar">
+				</div>
+				<div class="container">
+					<p id=target></p>
+					<input type="number" id="numerofkg" class="numerofkg" min="1" max="20" value="1"> </input> </b>
+					<button type="button" class="modalbutton" onclick="incrementValue()">הוסף לחבילה</button>
+					<button type="button" onclick="document.getElementById('id02').style.display='none'"
+						class="modalbutton" id="cancelbtn">חזור</button>
+				</div>
+			</form>
+		</div>
+
+{% endblock %}
+
+{% block page_body_js %}
+
+     <script src="{{ url_for('selfAssembly.static', filename='js/selfAssembly.js') }}"></script>
+{% endblock %}
+

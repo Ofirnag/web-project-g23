@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ <html lang="{{ page_lang|default("en", true) }}", dir="rtl">
+    <head>
+    {% block page_head %}
+        {# Title #}
+        <title>{{ page_head_title_author|default('דגי גבעתיים', true) }} | {{ page_head_title|default('Flask skeleton project', true) }}</title>
+
+        {# Meta tags #}
+        {% block page_head_meta %}
+            <base href="/"/>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="author" content="Group23"/>
+            <meta name="description" content="Flask skeleton project as a base to start developing on"/>
+            <meta name="keywords" content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education"/>
+            {% block page_head_meta_extra %}{% endblock %}
+        {% endblock %}
+
+        {# favicon #}
+        <link rel="icon" href="{{ url_for('static', filename='media/img/logo.jpg') }}"/>
+
+        {# Base #}
+        <base href="/"/>
+        {# CSS #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}"/>
+        {% block page_head_css %}{% endblock %}
+        {# JS #}
+
+    {% endblock %}
+
+    </head>
+    <body>
+        {% block page_body_content %}
+            {# Header #}
+            {% block page_body_header %}
+                <header class="page-header">
+                            <nav class="main-menu">
+                                            {% include 'main_menu.html' %}
+                            </nav>
+                </header>
+            {% endblock %}
+
+            {# Main #}
+            {% block page_body_main %}
+                <main class="page-main">
+                  {% block page_body_main_content %}
+                  {% endblock %}
+                </main>
+            {% endblock %}
+
+
+        {% endblock %}
+
+        {% block page_body_js %}{% endblock %}
+    </body>
+
+</html>

@@ -1,0 +1,67 @@
+
+form {
+	display: inline-block;
+	background-color: white;
+	border: 3px solid #f1f1f1;
+	width: 40%;
+	font-size: 2vw;
+}
+
+/* Full-width inputs */
+input[type="text"],
+input[type="email"],
+textarea[type="message"] {
+	direction: rtl;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 1.5vw;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: black;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	font-size: 2vw;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+	opacity: 0.8;
+}
+
+#keep {
+	font-size: 1.8vw;
+}
+
+
+@media only screen and (max-width: 758px) {
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea[type="message"] {
+		font-size: 3vw;
+	}
+	label[for="fullname"],
+	label[for="email"],
+	label[for="message"] {
+		font-size: 4vw;
+	}
+	.form {
+		font-size: 4vw;
+	}
+	#keep {
+		font-size: 4vw;
+	}
+	button[type="button"] {
+		font-size: 4vw;
+	}
+}

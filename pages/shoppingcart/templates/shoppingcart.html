@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'סל קניות' %}
+
+{% block page_head_css %}
+
+    <link rel="stylesheet" href="{{ url_for('shoppingcart.static', filename='css/cartStyle.css') }}">
+
+{% endblock %}
+
+{% block page_body_js %}
+  <script src="{{ url_for('shoppingcart.static', filename='js/cartJS.js') }}"></script>
+{% endblock %}
+
+{% block page_body_main_content %}
+            <section>
+				<h1 class="cart" >סל הקניות שלך</h1>
+				<div id="text" >  </div>
+			</section>
+    {% if success =="yes"%}
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for ms in messages %}
+                            <h4>{{ ms }}</h4>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+    {% elif session %}
+        {% if cart %}
+           {% for item in cart %}
+                <div class="shopping-cart">
+ 			    <section  class="product" id={{ item.package_name }}>
+                    <div class="description">
+                        <span>{{ item.hebrew_name }}</span>
+                        <span>{{ item.desce }}</span>
+                    </div>
+                    <img class="pic"  alt = "plate" src= {{ item.photo }} >
+                    <div class="product-price">{{ item.price }} ש"ח </div>
+     			    <a class="remove-product" href="/shoppingcart/{{ item.serial_number }}").style.display='none'><b> מחק פריט מהרשימה</b> </a>
+                </section>
+                </div>
+            {% endfor %}
+        {% else %}
+                    <h2>סל הקניות שלך ריק, יש להוסיף פריטים לסל</h2>
+        {% endif %}
+                 <!-- סיכום הזמנה -->
+  			<section class="totals">
+      		 <hr class="line">
+                <h4>{{ error }}</h4>
+                {% if price!=0%}
+                    <p class="total-price">סה"כ לתשלום: <b>{{ price }} </b></p>
+                    <button onclick="myFunction()"  class="send" > המשך לתשלום </button>
+                    <div id="myDIV" style="display:none;">
+	<section id="login" class="section" >
+		<h3>מלא פרטי משלוח</h3>
+		<form method="POST" enctype="multipart/form-data" action="/shoppingcart" onsubmit="return validUS()">
+			<div class="container">
+				<label for="address"><b class="register" id="address11" >כתובת הספקה </b></label>
+				<input type="text" placeholder="עיר,רחוב,מספר בית" name="address" id="address"  required autofocus />
+				<label for="fordate"> <b class="register"> בחר תאריך אספקה רצוי </b> </label>
+				<input type="date" class="form-control" name=dateS id="fordate" placeholder="MM/YY" required autofocus/>
+			</div>
+		<h3>הכנס את פרטי האשראי שלך</h3>
+			<div class="container">
+				<label for="cardNumber"><b class="register">מספר כרטיס</b></label>
+				<input type="text" placeholder="הכנס מספר כרטיס" name="cardNumber" id="cardNumber"  required autofocus />
+				<label for="date"> <b class="register"> תוקף </b> </label>
+				<input type="text"  class="form-control"   name="date" id="date" placeholder="MM/YY" required />
+                <label for="cvv"> <b class="register">קוד סודי</b></label>
+				<input type="text" class="form-control" name="cvv" id="cvv" placeholder="cvv" required />
+				<button   type="submit">שלם </button>
+			</div>
+		</form>
+		<br>
+		<br>
+		<br><br>
+
+	</section>
+                    </div>
+                {% endif %}
+			</section>
+   {% else %}
+        <h2>
+            אנא התחבר למשתמש על מנת לראות את סל הקניות
+        </h2>
+    {% endif %}
+
+{% endblock %}

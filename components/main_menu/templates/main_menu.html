@@ -1,0 +1,29 @@
+
+
+<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main-menu.css') }}"/>
+
+<!-- Navigation links -->
+		<nav id="nava">
+            <a class="title" href={{ url_for('home.index')}}>
+			<h1><span class="highlight" >דגי גבעתיים</span><img src="{{ url_for('main_menu.static', filename='media/img/main_logo.png') }}" style="height:5vw"></h1>
+            </a>
+                <b>
+                {% if session.username %}
+                    <a class="user" >שלום , {{ session.username  }}</a>
+                {% endif %}
+				<a class="navlink" id="home" href={{ url_for('home.index')}}>בית</a>
+				<a class="navlink" href={{ url_for('selfAssembly.index') }}>הרכבה עצמית</a>
+				<a class="navlink" href={{ url_for('packages.index') }}>חבילות מומלצות</a>
+				<a class="navlink" href={{ url_for('workshops.index') }}>סדנאות</a>
+				<a class="navlink" href={{ url_for('shoppingcart.index') }}>סל קניות</a>
+				<a class="navlink" href={{ url_for('contact.contact_func') }}>צור קשר</a>
+
+                {% if session.username %}
+                    <a class="navlink" href="/logout">התנתק</a>
+                {% else %}
+                    <a class="navlink" href={{ url_for('register.index') }}>הרשמה</a>
+				    <a class="navlink" href={{ url_for('login.login_fun') }}>התחברות</a>
+                {% endif %}
+			</b>
+
+		</nav>

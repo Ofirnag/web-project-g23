@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'דף הבית' %}
+
+
+{% block page_head_css %}
+   {{  super() }}
+    <link rel="stylesheet" type= "text/css"  href="{{ url_for('home.static', filename='css/home.css') }}">
+
+{% endblock %}
+
+
+
+{% block page_body_main_content  %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for ms in messages %}
+                <h4>{{ ms }}</h4>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+		<h1 class="AboutUs" >דגי גבעתיים</h1>
+
+		<p> חברת דגי גבעתיים נוסדה בשנת 1951 והחלה את דרכה כאטליז משפחתי והיתה מפורסמת ברחבי העיר בשל סחורתה האיכותית
+		</p>
+		<p>עם השנים החברה התפתחה והחלה בשיווק בשרים וציוד נלווה עבור אירועים בכל רחבי הארץ</p>
+		<p> כיום מלבד מכירת מוצר בשר איכותי, החברה מציעה גם סדנאות מקצועיות בכל מה שקשור לבשר</p>
+
+		<div class="slide">
+
+			<h2 style="text-align:center">גלריה</h2>
+
+
+			<div class="mySlides" id="mySlides" >
+				<div class="numbertext">1 / 6</div>
+				<img src="{{ url_for('home.static', filename='media/img/event5.jpg') }}" >
+			</div>
+
+			<div class="mySlides">
+				<div class="numbertext">2 / 6</div>
+				<img src="{{ url_for('home.static', filename='media/img/event1.jpg') }}" >
+			</div>
+
+			<div class="mySlides">
+				<div class="numbertext">3 / 6</div>
+				<img src="{{ url_for('home.static', filename='media/img/event3.jpg') }}" >
+			</div>
+
+			<div class="mySlides">
+				<div class="numbertext">4 / 6</div>
+				<img src="{{ url_for('home.static', filename='media/img/event2.jpeg') }}" >
+			</div>
+
+			<div class="mySlides">
+				<div class="numbertext">5 / 6</div>
+				<img src="{{ url_for('home.static', filename='media/img/event4.webp') }}" >
+			</div>
+
+			<div class="mySlides">
+				<div class="numbertext">6 / 6</div>
+				<img src="{{ url_for('home.static', filename='media/img/event6.jpg') }}" >
+			</div>
+
+			<a class="prev" onclick="plusSlides(-1)">❮</a>
+			<a class="next" onclick="plusSlides(1)">❯</a>
+
+			<div class="caption-container">
+				<p id="caption"></p>
+			</div>
+
+			<div class="row">
+				<div class="column">
+					<img class="demo cursor" src="{{ url_for('home.static', filename='media/img/event5.jpg') }}"  onclick="currentSlide(1)"
+						alt="חינה במושב מסלול">
+				</div>
+				<div class="column">
+					<img class="demo cursor" src="{{ url_for('home.static', filename='media/img/event1.jpg') }}"  onclick="currentSlide(2)"
+						alt="מסיבת רווקים בצימר בצפון">
+				</div>
+				<div class="column">
+					<img class="demo cursor" src="{{ url_for('home.static', filename='media/img/event3.jpg') }}" onclick="currentSlide(3)"
+						alt="אירועי יום העצמאות משפחת כהן">
+				</div>
+				<div class="column">
+					<img class="demo cursor" src="{{ url_for('home.static', filename='media/img/event2.jpeg') }}"  onclick="currentSlide(4)"
+						alt="בר מצווה משפחת ישראלי בחצר הבית">
+				</div>
+				<div class="column">
+					<img class="demo cursor" src="{{ url_for('home.static', filename='media/img/event4.webp') }}"  onclick="currentSlide(5)"
+						alt="ערב גיבוש עובדים חברת סלקום">
+				</div>
+				<div class="column">
+					<img class="demo cursor" src="{{ url_for('home.static', filename='media/img/event6.jpg') }}"  onclick="currentSlide(6)"
+						alt="מסיבת רווקות בהזמנת שף פרטי">
+				</div>
+			</div>
+		</div>
+		</div>
+
+{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('home.static', filename='js/home.js') }}"></script>
+{% endblock %}
+
+

@@ -1,0 +1,48 @@
+
+.highlight {
+	color: black;
+	font-size: 5vw;
+	padding-right: 2vw;
+
+}
+
+/*HEDAER AND NAV*/
+
+.navlink {
+	padding: 0 1vw;
+	margin: 0;
+	color: black;
+	text-decoration: none; /* removes default underline */
+}
+
+
+a.navlink:hover {
+	background: gray;
+}
+.user {
+	padding: 0 1vw;
+	margin: 0;
+	color: black;
+	text-decoration: none; /* removes default underline */
+}
+
+.title {
+	color: black;
+	text-decoration: none; /* removes default underline */
+}
+
+header {
+	direction: rtl;
+	width: 100%;
+	background: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: right;
+	overflow: hidden;
+	position: fixed; /* Set the navbar to fixed position */
+	top: 0; /* Position the navbar at the top of the page */
+}
+
+
+

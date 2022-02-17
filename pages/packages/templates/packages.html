@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'הרכבה עצמית' %}
+
+
+{% block page_head_css %}
+     {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('packages.static', filename='css/packages.css') }}">
+
+{% endblock %}
+
+{% block page_body_js %}
+    <script type=text/javascript src="{{ url_for('packages.static', filename='js/packages.js') }}"></script>
+{% endblock %}
+
+{% block page_body_main_content %}
+
+		<h1 id="text">	</h1>
+		<div class="images_buttons">
+
+                {% for package in packages_t %}
+                    {% if package.package_name!="selfassembly" and package.package_name!="סדנא" %}
+                        <a onclick=dis("{{package.package_name}}") style="background-image:url({{package.photo}})">
+                            <span>{{ package.hebrew_name }}</span>
+                            <output type="text" id="{{package.package_name}}_name" hidden>{{ package.package_name }}</output>
+                            <output type="text" id="{{package.package_name}}_img" hidden>{{package.photo}}</output>
+                            <output type="number" id="{{package.package_name}}_price" hidden>{{ package.price }}</output>
+                            <output type="text" id="{{package.package_name}}_desc" hidden>{{ package.desc }}</output>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+		</div>
+		<div id="id01" class="modal">
+			<form class="modal-content animate" method="post" action="/packages/add_to_cart">
+				<div class="imgcontainer">
+					<span onclick="document.getElementById('id01').style.display='none'" class="close"
+						title="Close Modal">&times;</span>
+					<img id="modal_img" src="" alt="Avatar" class="avatar">
+				</div>
+				<div class="container">
+					<p id=target>
+					</p>
+                    <input type="text" id="desc" name="desc" hidden></input>
+                    <input type="text" id="order" name="order" hidden></input>
+                    <input type="number" id="price" name="price" hidden></input>
+                    {% if session.username %}
+                        <button  type="submit" class="modalbutton">הוסף לסל</button>
+                    {% else %}
+                        <a  >יש להתחבר על מנת להוסיף פריט זה לסל</a>
+                    {% endif %}
+
+				</div>
+				<div class="container">
+					<button type="button" onclick="document.getElementById('id01').style.display='none'"
+						class="modalbutton" id="cancelbtn">חזור</button>
+				</div>
+			</form>
+		</div>
+
+{% endblock %}
